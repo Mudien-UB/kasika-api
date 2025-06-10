@@ -7,14 +7,14 @@ import java.util.List;
 
 @Entity
 @Table(name = "business")
-@RequiredArgsConstructor
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Setter
 @Builder
 public class Business extends ModelBase {
 
-    @Column(name = "name",length = 50, nullable = false)
+    @Column(name = "name",length = 100, nullable = false)
     private String name;
 
     @Column(name = "phone_number", length = 13, nullable = false)
