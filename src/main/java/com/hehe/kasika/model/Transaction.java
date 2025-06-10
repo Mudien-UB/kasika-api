@@ -33,6 +33,7 @@ public class Transaction extends ModelBase {
     private String cashierName;
 
     @Column(name = "total_price", nullable = false)
+    @Builder.Default
     private Double totalPrice = Double.NaN;
 
     @Column(name = "payment_method", nullable = false)
@@ -41,6 +42,7 @@ public class Transaction extends ModelBase {
 
     @Column(name = "status", nullable = false)
     @Enumerated(EnumType.STRING)
+    @Builder.Default
     private TRANSACTION_STATUS status =  TRANSACTION_STATUS.PENDING;
 
     @Column(name = "note" )

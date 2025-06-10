@@ -7,10 +7,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "business")
-@RequiredArgsConstructor
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Setter
 @Builder
 public class Business extends ModelBase {
 

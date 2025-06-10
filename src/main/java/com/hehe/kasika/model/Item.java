@@ -16,6 +16,7 @@ public class Item extends ModelBase {
     private String name;
 
     @Column(nullable = false)
+    @Builder.Default
     private Double price = Double.NaN;
 
     @Column(nullable = false)

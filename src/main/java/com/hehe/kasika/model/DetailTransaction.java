@@ -30,9 +30,11 @@ public class DetailTransaction{
     private String itemName;
 
     @Column(name = "item_price", nullable = false)
+    @Builder.Default
     private Double itemPrice = Double.NaN;
 
     @Column(name = "quantity", nullable = false )
+    @Builder.Default
     private Double quantity = Double.NaN;
 
     @Column(name = "created_at", nullable = false, updatable = false)
