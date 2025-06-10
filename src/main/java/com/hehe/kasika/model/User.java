@@ -13,13 +13,13 @@ import lombok.*;
 @NoArgsConstructor
 public class User extends ModelBase {
 
-    @Column(name = "username", length = 50, nullable = false)
+    @Column(name = "username", length = 100, nullable = false)
     private String username;
 
     @Column(name = "phone_number", length = 12, nullable = false)
     private String phoneNumber;
 
-    @Column(name = "password", length = 12, nullable = false)
+    @Column(name = "password", nullable = false)
     private String password;
 
     @Column(name = "role", nullable = false)

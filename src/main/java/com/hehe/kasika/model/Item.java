@@ -22,7 +22,7 @@ public class Item extends ModelBase {
     private String unit;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "business_id")
+    @JoinColumn(name = "business_id", nullable = false)
     private Business business;
 
 }
