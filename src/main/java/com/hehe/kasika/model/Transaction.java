@@ -2,19 +2,15 @@ package com.hehe.kasika.model;
 
 import com.hehe.kasika.model.enums.PAYMENT_METHOD;
 import com.hehe.kasika.model.enums.TRANSACTION_STATUS;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
 @Table(name = "transaction")
@@ -23,11 +19,32 @@ import lombok.Setter;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Transaction extends ModelBase {
+public class Transaction {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
+
+    @Column( name = "created_at", updatable = false, nullable = false)
+    private LocalDateTime createAt;
+
+    @Column(name = "updated_at", nullable = false)
+    private LocalDateTime updateAt;
+
+    @PrePersist
+    public void prePersist() {
+        createAt = LocalDateTime.now();
+        updateAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+        updateAt = LocalDateTime.now();
+    }
 
     @JoinColumn(name = "cashier_id")
     @ManyToOne(fetch = FetchType.LAZY)
-    private User cashier;
+    private Users cashier;
 
     @Column(name = "cashier_name", length = 100, nullable = false)
     private String cashierName;
