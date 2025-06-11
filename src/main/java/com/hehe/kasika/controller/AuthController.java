@@ -4,7 +4,6 @@ import com.hehe.kasika.dto.request.AuthRequest;
 import com.hehe.kasika.dto.request.UserRequest;
 import com.hehe.kasika.dto.response.AuthResponse;
 import com.hehe.kasika.dto.response.UserResponse;
-import com.hehe.kasika.model.enums.ROLE_USER;
 import com.hehe.kasika.service.AuthService;
 import com.hehe.kasika.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -39,8 +38,7 @@ public class AuthController {
         var response = userService.createUser(
                 userRequest.getUsername(),
                 userRequest.getPassword(),
-                userRequest.getPhoneNumber(),
-                ROLE_USER.ADMIN
+                userRequest.getPhoneNumber()
         );
 
         if(response == null) {
@@ -53,6 +51,6 @@ public class AuthController {
     @GetMapping("/test")
     public ResponseEntity<?> test() {
         String test = "test";
-        return ResponseEntity.status(HttpStatus.OK).body(test);
+        return ResponseEntity.ok("test");
     }
 }

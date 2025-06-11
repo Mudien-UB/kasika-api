@@ -1,11 +1,9 @@
 package com.hehe.kasika.util;
 
 import com.hehe.kasika.config.JwtConfig;
-import com.hehe.kasika.model.UserPrincipal;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 

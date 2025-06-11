@@ -2,12 +2,15 @@ package com.hehe.kasika.dto.response;
 
 
 import com.hehe.kasika.model.Users;
+import com.hehe.kasika.model.enums.ROLE_USER;
+
+import java.util.List;
 
 public record UserResponse(
         String id,
         String username,
         String phoneNumber,
-        String role
+        List<String> role
 ) {
 
     public static UserResponse of(Users user) {
@@ -15,7 +18,7 @@ public record UserResponse(
                 user.getId().toString(),
                 user.getUsername(),
                 user.getPhoneNumber(),
-                user.getRole().name()
+                user.getRoles().stream().map(ROLE_USER::name).toList()
         );
     }
 }

@@ -5,6 +5,9 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -37,7 +40,7 @@ public class Users  {
         updateAt = LocalDateTime.now();
     }
 
-    @Column(name = "username", length = 100, nullable = false)
+    @Column(name = "username", length = 100, nullable = false,unique = true)
     private String username;
 
     @Column(name = "phone_number", length = 12, nullable = false)
@@ -46,9 +49,12 @@ public class Users  {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "role", nullable = false)
+    @ElementCollection(targetClass = ROLE_USER.class, fetch = FetchType.LAZY)
     @Enumerated(EnumType.STRING)
-    private ROLE_USER role;
+    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
+    @Column(name = "roles")
+    @Builder.Default
+    private Set<ROLE_USER> roles = Set.of(ROLE_USER.USER);
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "business_id")

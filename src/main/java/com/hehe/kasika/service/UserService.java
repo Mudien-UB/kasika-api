@@ -6,8 +6,8 @@ import jakarta.validation.constraints.NotNull;
 
 public interface UserService {
 
-    Users createUser(@NotNull String username, @NotNull String password, @NotNull String phoneNumber, @NotNull ROLE_USER role);
+    Users createUser(@NotNull String username, @NotNull String password, @NotNull String phoneNumber);
     Users findByUsername(@NotNull String username);
     Users getFromContext();
-
+    Users addRoleUser(@NotNull ROLE_USER role, @NotNull Users user);
 }

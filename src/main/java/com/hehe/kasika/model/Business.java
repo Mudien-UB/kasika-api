@@ -26,6 +26,16 @@ public class Business  {
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updateAt;
 
+    @Column(name = "name",length = 100, nullable = false)
+    private String name;
+
+    @Column(name = "phone_number", length = 13, nullable = false)
+    private String phoneNumber;
+
+    @OneToMany(mappedBy = "business", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Users> listUser;
+
+
     @PrePersist
     public void prePersist() {
         createAt = LocalDateTime.now();
@@ -36,14 +46,5 @@ public class Business  {
     public void preUpdate() {
         updateAt = LocalDateTime.now();
     }
-    @Column(name = "name",length = 100, nullable = false)
-    private String name;
-
-    @Column(name = "phone_number", length = 13, nullable = false)
-    private String phoneNumber;
-
-    @OneToMany(mappedBy = "business", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Users> listUser;
-
 
 }
