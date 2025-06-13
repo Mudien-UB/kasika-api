@@ -10,4 +10,6 @@ public interface UserService {
     Users findByUsername(@NotNull String username);
     Users getFromContext();
     Users addRoleUser(@NotNull ROLE_USER role, @NotNull Users user);
+
+    boolean isUsernameAlreadyInUse(@NotNull String username);
 }

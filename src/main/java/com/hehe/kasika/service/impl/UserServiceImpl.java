@@ -58,4 +58,9 @@ public class UserServiceImpl implements UserService {
             return userRepository.save(user);
         }
     }
+
+    @Override
+    public boolean isUsernameAlreadyInUse(String username) {
+        return userRepository.existsByUsername(username);
+    }
 }

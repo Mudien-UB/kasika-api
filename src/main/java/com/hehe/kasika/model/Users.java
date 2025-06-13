@@ -23,23 +23,6 @@ public class Users  {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column( name = "created_at", updatable = false, nullable = false)
-    private LocalDateTime createAt;
-
-    @Column(name = "updated_at", nullable = false)
-    private LocalDateTime updateAt;
-
-    @PrePersist
-    public void prePersist() {
-        createAt = LocalDateTime.now();
-        updateAt = LocalDateTime.now();
-    }
-
-    @PreUpdate
-    public void preUpdate() {
-        updateAt = LocalDateTime.now();
-    }
-
     @Column(name = "username", length = 100, nullable = false,unique = true)
     private String username;
 
@@ -59,5 +42,22 @@ public class Users  {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "business_id")
     private Business business;
+
+    @Column( name = "created_at", updatable = false, nullable = false)
+    private LocalDateTime createAt;
+
+    @Column(name = "updated_at", nullable = false)
+    private LocalDateTime updateAt;
+
+    @PrePersist
+    public void prePersist() {
+        createAt = LocalDateTime.now();
+        updateAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+        updateAt = LocalDateTime.now();
+    }
 
 }

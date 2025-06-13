@@ -19,6 +19,20 @@ public class Item{
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    @Column(nullable = false , length = 100)
+    private String name;
+
+    @Column(nullable = false)
+    @Builder.Default
+    private Double price = Double.NaN;
+
+    @Column(nullable = false)
+    private String unit;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "business_id")
+    private Business business;
+
     @Column( name = "created_at", updatable = false, nullable = false)
     private LocalDateTime createAt;
 
@@ -35,16 +49,5 @@ public class Item{
     public void preUpdate() {
         updateAt = LocalDateTime.now();
     }
-
-    @Column(nullable = false , length = 100)
-    private String name;
-
-    @Column(nullable = false)
-    @Builder.Default
-    private Double price = Double.NaN;
-
-    @Column(nullable = false)
-    private String unit;
-
 
 }
