@@ -11,6 +11,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
@@ -47,6 +50,18 @@ public class AuthController {
         return ResponseEntity.ok(UserResponse.of(response));
 
     }
+
+    @GetMapping("/username-check")
+    public ResponseEntity<?> usernameCheck(@RequestParam String username) {
+        Map<String, Object> response = new HashMap<>();
+        boolean taken = userService.isUsernameAlreadyInUse(username);
+
+        response.put("available", !taken);
+        response.put("message", taken ? "Username is already taken" : "Username is available");
+
+        return ResponseEntity.ok(response);
+    }
+
 
     @GetMapping("/test")
     public ResponseEntity<?> test() {

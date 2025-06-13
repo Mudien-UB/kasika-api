@@ -35,6 +35,8 @@ public class Business  {
     @OneToMany(mappedBy = "business", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Users> listUser;
 
+    @OneToMany(mappedBy = "business", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Item> listItems;
 
     @PrePersist
     public void prePersist() {

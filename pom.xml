@@ -14,18 +14,23 @@
 	<name>kasika</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
-<!--	<licenses>-->
-<!--		<license/>-->
-<!--	</licenses>-->
-<!--	<developers>-->
-<!--		<developer/>-->
-<!--	</developers>-->
-<!--	<scm>-->
-<!--		<connection/>-->
-<!--		<developerConnection/>-->
-<!--		<tag/>-->
-<!--		<url/>-->
-<!--	</scm>-->
+	<licenses>
+		<license />
+	</licenses>
+	<developers>
+		<developer>
+			<name>bey_mudien</name>
+			<email>mudienub@gmail.com</email>
+			<url>https://ubay-lahmudien.vercel.app</url>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:https://github.com/Mudien-UB/kasika-api.git</connection>
+		<developerConnection>scm:git:git@github.com:Mudien-UB/kasika-api.git</developerConnection>
+		<url>https://github.com/Mudien-UB/kasika-api</url>
+	</scm>
+
 	<properties>
 		<java.version>21</java.version>
 	</properties>
